@@ -1,7 +1,11 @@
-import { ReactElement } from "react";
+'use client';
 
-export default function Heading({ level, children }:
-    { level: number, children: string | ReactElement | ReactElement[] }) {
+import { ReactElement, useContext } from "react";
+import { LevelContext } from "./contexts";
+
+export default function Heading({ children }: { children: string | ReactElement | ReactElement[] }) {
+    const level = useContext(LevelContext);
+
     switch (level) {
         case 1:
             return <h1>{children}</h1>;

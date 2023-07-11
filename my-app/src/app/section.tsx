@@ -1,9 +1,14 @@
-import { ReactElement } from "react";
+'use client';
 
-export default function Section({ children }: { children: ReactElement[] }) {
+import { ReactElement } from "react";
+import { LevelContext } from "./contexts";
+
+export default function Section({ level, children }: { level: number, children: ReactElement[] }) {
     return (
         <section className="section">
-            {children}
+            <LevelContext.Provider value={level}>
+                {children}
+            </LevelContext.Provider>
         </section>
     );
 }
